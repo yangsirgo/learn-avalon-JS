@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style type="text/css">
+      .bbb{
+    background: #1ba9ba;
+    width:200px;
+    height: 200px;
+    padding:20px;
+    box-sizing:content-box;
+    }
+    .ccc{
+        background: #168795;
+        width:160px;
+        text-align: center;
+        line-height: 160px;
+        height: 160px;
+        margin:20px;
+        box-sizing:content-box;
+    }
+    .dddd{
+      background: white;
+    }
+    </style>
+    <body>
+      <div class="aaa" ms-controller="test">
+        <div class="bbb" ms-mouseenter="@fn1" ms-mouseleave="@fn2" ms-click='@clickEvent($event)'>
+            <div class="ccc" >
+                {{@text}}
+            </div>
+        </div>
+      </div>
+    </body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/avalon.js/2.2.4/avalon.js"></script>
+<script type="text/javascript">
+avalon.define({
+    $id: "test",
+    text: "",
+    fn1: function (e) {
+       this.text = e.target.className + " "+ e.type
+    },
+    fn2: function (e) {
+       this.text = e.target.className + " "+ e.type
+    },
+    clickEvent:function(e){
+        console.log(e);
+        e.target.className = "dddd"
+        console.log(this)
+    }
+})
+
+</script>
